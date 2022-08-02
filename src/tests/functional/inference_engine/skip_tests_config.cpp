@@ -17,5 +17,9 @@ std::vector<std::string> disabledTestPatterns() {
         ".*TransformationTests\\.DontStartSubgraphSingleOutput.*",
         // TODO: Move this test to CPU-specific
         ".*TransformationTests\\.DoNotStartSubgraphAfterInputs.*"
+#ifndef BUILD_SHARED_LIBS
+        // Disable tests for static libraries
+        , ".*FrontendLibCloseTest.*"
+#endif
     };
 }
